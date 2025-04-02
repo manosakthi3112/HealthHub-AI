@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ video.title }}</title>
+    <style>
+        /* Base Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #2c2c2c; /* Dark Gray Background */
+            color: #ddd; /* Light gray text */
+        }
+        
+        .container {
+            width: 85%;
+            margin: 50px auto;
+            padding: 30px;
+            background: #3a3a3a; /* Slightly lighter gray */
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s;
+        }
+
+        .container:hover {
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 32px;
+            color: #ff8c00; /* Orange heading */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 18px;
+            color: #ccc; /* Light gray text */
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+        }
+        
+        video {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        
+        video:hover {
+            transform: scale(1.03);
+        }
+        
+        a {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background: #ff8c00; /* Orange button */
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        a:hover {
+            background: #e07b00; /* Darker orange */
+            transform: scale(1.05);
+        }
+
+        /* Footer for navigation */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            p {
+                font-size: 16px;
+            }
+            
+            a {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+            
+            video {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>{{ video.title }}</h1>
+    <p>{{ video.description }}</p>
+    <p><strong>Body Part:</strong> {{ video.body_part }}</p>
+    <p><strong>Equipment:</strong> {{ video.equipment }}</p>
+    <p><strong>Type:</strong> {{ video.type }}</p>
+
+    <div class="video-container">
+        <video controls width="640" height="360">
+    <source src="{{ url_for('stream', file_id=file_id) }}" type="{{ 'video/mp4'}}">
+    Your browser does not support the video tag.
+</video>
+
+    </div>
+
+    <div class="footer">
+        <a href="{{ url_for('index') }}">⬅️ Back to All Videos</a>
+    </div>
+</div>
+</body>
+</html>

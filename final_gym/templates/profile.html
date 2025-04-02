@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff8c00, #e07b00, #f4a261);
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            border-radius: 16px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Profile Photo Styling */
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ff8c00;  /* Orange border */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.1);
+        }
+
+        h2, h3, h4 {
+            color: #444;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Form and Input Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input[type="password"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border: 1px solid #ff8c00;  
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: #ff8c00;  
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #e07b00;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Navigation Button */
+        .nav-btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .nav-btn a {
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>✨ User Profile ✨</h2>
+
+    <!-- Display Profile Photo -->
+    {% if photo_url %}
+    <img src="{{ photo_url }}" alt="Profile Photo" class="profile-photo">
+    {% else %}
+    <p>No profile photo uploaded.</p>
+    {% endif %}
+
+    <!-- Photo Upload Form -->
+    <form action="{{ url_for('upload_photo') }}" method="POST" enctype="multipart/form-data">
+        <label for="photo">Upload New Photo:</label>
+        <input type="file" name="photo" accept="image/*" required>
+        <button type="submit" class="btn">Upload</button>
+    </form>
+
+    <!-- User Details -->
+    <h3>Username:</h3>
+    <p>{{ username }}</p>
+
+    <h3>Password:</h3>
+    <p>{{password}}</p> <!-- Masking the password for security -->
+
+    <!-- Password Edit Form -->
+    <h4>Change Password 🔒</h4>
+    <form action="{{ url_for('edit_password') }}" method="POST">
+        <label>Current Password:</label>
+        <input type="password" name="current_password" placeholder="Enter current password" required>
+
+        <label>New Password:</label>
+        <input type="password" name="new_password" placeholder="Enter new password" required>
+
+        <button type="submit" class="btn">Update Password</button>
+    </form>
+    <br>
+    <br>
+    <a href="{{url_for('admin_login')}}" class="btn">ADMIN LOGIN
+    </a>
+    <!-- Back to Dashboard -->
+    <div class="nav-btn">
+        <a href="{{ url_for('index') }}" class="btn">Back to Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #ece9e6, #ffffff);
+    color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Centered Container */
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Gradient Title */
+.title {
+    font-weight: 700;
+    font-size: 26px;
+    background: linear-gradient(135deg, #ff7f00, #ff4500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Glassmorphism Effect */
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: 0.3s ease-in-out;
+}
+
+/* Glassmorphism Hover Effect */
+.glassmorphism:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Total Calories Box */
+.total-calories {
+    background: rgba(255, 99, 71, 0.15);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Accordion Customization */
+.accordion-button {
+    font-weight: 500;
+    background: linear-gradient(135deg, #f8f9fa, #e0e0e0);
+    border-radius: 5px;
+}
+
+.accordion-button:hover {
+    background: #e6e6e6;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+/* Accordion Content */
+.accordion-body {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Buttons */
+.btn {
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Hover Effects */
+.btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom Buttons */
+.btn-danger {
+    background: linear-gradient(135deg, #ff4b2b, #ff416c);
+    border: none;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    box-shadow: 0px 5px 15px rgba(255, 65, 108, 0.3);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745, #218838);
+    border: none;
+    color: white;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+}
+
+/* Dark Mode */
+.dark-mode {
+    background: #121212;
+    color: #ffffff;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Dark Mode Glassmorphism */
+.dark-mode .glassmorphism {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Dark Mode Accordion */
+.dark-mode .accordion-button {
+    background: #222;
+    color: white;
+}
+
+.dark-mode .accordion-button:hover {
+    background: #333;
+}
+
+/* Dark Mode Buttons */
+.dark-mode .btn {
+    background: #333;
+    color: white;
+    border: none;
+}
+
+.dark-mode .btn:hover {
+    background: #444;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Dark Mode Total Calories */
+.dark-mode .total-calories {
+    background: rgba(255, 99, 71, 0.3);
+}

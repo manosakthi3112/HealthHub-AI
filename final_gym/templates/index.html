@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--  *****   Link To Custom CSS Style Sheet   *****  -->
+	<link rel="stylesheet" type="text/css" href="static/css/style_index.css">
+
+	<!--  *****   Link To Font Awsome Icons   *****  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	
+	<title>HealthHub AI</title>
+</head>
+<body>
+<!--   *** Website Wrapper Starts ***   -->
+<div class="website-wrapper">
+	
+<!--   *** Home Section Starts ***   -->
+<section class="home" id="home" style="background: url('static/images/home/home-bg2.jpg');">
+	
+	<div class="home-overlay"></div>
+	<!--   === Main Navbar Starts ===   -->
+	<nav class="main-navbar">
+		<div class="logo">
+			<img src="static/images/home/logo.png">
+		</div>
+		<ul class="nav-list">
+			<li><a href="#home">Home</a></li>
+			<li><a href="#about">About</a></li>
+			<li><a href="#services">Services</a></li>
+			<li><a href="#our_team">Our Experts</a></li>
+			<li><a href="#pricing">Prices</a></li>
+			<li><a href="#blog">Blog</a></li>
+			<li><a href="{{url_for('profile')}}">Profile</li>
+			<li><a href="{{url_for('logout')}}">Logout</li>
+		</ul>
+		<a href="#" class="join-us-btn-wrapper">
+			<button class="btn join-us-btn">Join Us</button>
+		</a>
+		<div class="hamburger-btn">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</nav>
+	<!--   === Main Navbar Ends ===   -->
+	<!--   === Banner Starts ===   -->
+	<div class="banner">
+		<div class="banner-contents">
+			<h2>Start your training at HealthHub AI</h2>
+			<h1>Unlock Your Potential with AI-Powered Health</h1>
+			<p>HealthHub AI is your intelligent fitness companion, offering personalized workout plans powered by cutting-edge AI. Whether you’re looking to lose weight, build muscle, or improve overall health, our platform tailors every recommendation to fit your unique goals and preferences</p>
+			<button class="btn read-more-btn">Read More</button>
+		</div>
+	</div>
+	<!--   === Banner Ends ===   -->
+
+</section>
+<!--   *** Home Section Ends ***   -->
+
+<!--   *** Facilities Section Starts ***   -->
+<section class="facilities">
+	<div class="facilities-contents">
+		
+		<div class="facility-item">
+			<div class="facility-icon">
+				<i class="fa-solid fa-dumbbell"></i>
+			</div>
+			<a href="{{ url_for('excerise') }}" style="text-decoration: none;">
+			<div class="facility-desc">
+				<h2>personalized fitness</h2>
+				<p>Elevate your fitness routine with custom-tailored workouts designed to match your unique goals, abilities, and progress, ensuring every session brings you closer to your personal best.</p>
+			</div>
+		</a>
+		</div>
+
+		<div class="facility-item">
+			<div class="facility-icon">
+				<i class="fa-solid fa-utensils"></i>
+			</div>
+			<a href="{{ url_for('diet_tracker') }}"style="text-decoration: none;">
+			<div class="facility-desc">
+				<h2>nutrition guidance</h2>
+				<p>Transform your eating habits with expert guidance, delivering personalized nutrition that supports your unique health journey.</p>
+			</div>
+		</a>
+		</div>
+
+		<div class="facility-item">
+			<div class="facility-icon">
+				<i class="fa-solid fa-headset"></i>
+			</div>
+			<a href="{{ url_for('chatbot') }}"style="text-decoration: none;">
+			<div class="facility-desc">
+				<h2> AI-powered chatbot</h2>
+				<p >Our AI chatbot is your digital fitness partner, providing personalized workout tips and keeping you motivated every step of the way.</p>
+			</div>
+			</a>
+		</div>
+
+	</div>
+</section>
+<!--   *** Facilities Section Ends ***   -->
+
+<!--   *** About Section Starts ***   -->
+<section class="about" id="about">
+	<div class="about-contents">
+		
+		<div class="about-left-col">
+			<img src="static/images/about/about-image.jpg" alt="HealthHub AI Fitness"/>
+		</div>
+
+		<div class="about-right-col">
+			<h4>About Us</h4>
+			<h1>Your Personalized Fitness Journey Powered by AI</h1>
+			<p>At HealthHub AI, we are transforming fitness with the power of artificial intelligence. Our platform offers customized workout plans, real-time feedback, and expert advice – all tailored to help you achieve your fitness goals. Whether you’re a beginner or an experienced athlete, we create a fitness experience just for you, ensuring your journey is both effective and enjoyable.</p>
+			<div class="about-states">
+				<div class="about-state about-state-1">
+					<i class="fa-solid fa-robot"></i>
+					<h2>AI-Powered Guidance</h2>
+				</div>
+				<div class="about-state about-state-2">
+					<i class="fa-solid fa-heart"></i>
+					<h2>Personalized Wellness</h2>
+				</div>
+				<div class="about-state about-state-3">
+					<i class="fa-solid fa-users"></i>
+					<h2>Community Support</h2>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<!--   *** About Section Ends ***   -->
+
+<!--   *** Services Section Starts ***   -->
+<section class="services" id="services">
+	
+	<!--   === Services Header Starts ===   -->
+	<header class="section-header">
+		<h3>Our Services</h3>
+		<h1>What HealthHub AI Can Do For You</h1>
+		<p>At HealthHub AI, we offer personalized fitness and wellness solutions powered by artificial intelligence. Our services are designed to fit your unique goals and needs, ensuring an optimal fitness experience every time.</p>
+	</header>
+	<!--   === Services Header Ends ===   -->
+
+	<!--   === Services Contents Starts ===   -->
+	<div class="services-contents">
+		
+		<div class="service-box">
+			<div class="service-icon-box">
+				<i class="fa-solid fa-person-running"></i>
+			</div>
+			<a href="{{ url_for('excerise') }}" style="text-decoration: none;">
+			<div class="service-desc">
+				<h2>Personalized Workouts</h2>
+				<p>Get customized workout routines that evolve with your fitness level, helping you progress safely and efficiently towards your goals.</p>
+			</div>
+		</a>
+		</div>
+
+		<div class="service-box">
+			<div class="service-icon-box">
+				<i class="fa-solid fa-apple-alt"></i>
+			</div>
+			<a href="{{ url_for('meal_suggestion') }}" style="text-decoration: none;">
+			<div class="service-desc">
+				<h2>Nutrition Guidance</h2>
+				<p>Receive AI-powered meal plans tailored to your fitness goals, whether it's weight loss, muscle gain, or overall health improvement.</p>
+			</div>
+		</a>
+		</div>
+
+		<div class="service-box">
+			<div class="service-icon-box">
+				<i class="fa-solid fa-comments"></i>
+			</div>
+			<a href="{{ url_for('chatbot') }}" style="text-decoration: none;">
+			<div class="service-desc">
+				<h2>AI Chatbot Support</h2>
+				<p>Our intelligent AI chatbot offers real-time advice, motivation, and progress tracking to ensure you're on track with your fitness journey.</p>
+			</div>
+		</a>
+		</div>
+
+		<div class="service-box">
+			<div class="service-icon-box">
+				<i class="fa-solid fa-sync-alt"></i>
+			</div>
+			<a href="{{ url_for('diet_tracker') }}" style="text-decoration: none;">
+			<div class="service-desc">
+				<h2>Progress Tracking</h2>
+				<p>Track your workout progress and nutrition goals over time with personalized feedback and adjustments to keep you motivated and moving forward.</p>
+			</div>
+		</a>
+		</div>
+
+	</div>
+	<!--   === Services Contents Ends ===   -->
+
+</section>
+
+<!--   *** Services Section Ends ***   -->
+
+<!--   *** Offer Section Starts ***   -->
+<section class="offer">
+	<div class="offer-overlay"></div>
+	<div class="offer-contents">
+		<h1>Kickstart Your Fitness Journey with HealthHub AI</h1>
+		<span>&</span>
+		<h3>Get 30% Off on Your First Month</h3>
+		<button class="btn start-training-btn">Join HealthHub AI Now</button>
+	</div>
+</section>
+
+<!--   *** Offer Section Ends ***   -->
+
+<!--   *** Team Section Starts ***   -->
+<section class="our-team" id="our_team">
+	<!--   === Team Header Starts ===   -->
+	<header class="section-header">
+		<h3>Our Experts</h3>
+		<h1>Meet the AI Experts Behind HealthHub AI</h1>
+		<p>At HealthHub AI, we are powered by advanced artificial intelligence technology and a team of fitness experts who ensure the most effective and personalized fitness experience for you. Discover the minds behind the innovation.</p>
+	</header>
+	<!--   === Team Header Ends ===   -->
+
+	<!--   === Team Contents Starts ===   -->
+	<div class="team-contents">
+		
+		<div class="trainer-card">
+			<div class="trainer-image">
+				<img src="static/images/experts/ai-expert-1.jpg" alt="AI Fitness Expert">
+			</div>
+			<div class="trainer-desc">
+				<h2>Fitness AI Expert</h2>
+				<p>Our AI model, designed to analyze your data and create personalized fitness plans.</p>
+			</div>
+			<div class="trainer-contact">
+				<a href="#"><i class="fa-brands fa-linkedin"></i></a>
+				<a href="#"><i class="fa-brands fa-twitter"></i></a>
+			</div>
+		</div>
+
+		<div class="trainer-card">
+			<div class="trainer-image">
+				<img src="static/images/experts/nutrition-expert.jpg" alt="AI Nutrition Expert">
+			</div>
+			<div class="trainer-desc">
+				<h2>Nutrition AI Specialist</h2>
+				<p>Leveraging AI to craft personalized meal plans that complement your fitness journey.</p>
+			</div>
+			<div class="trainer-contact">
+				<a href="#"><i class="fa-brands fa-linkedin"></i></a>
+				<a href="#"><i class="fa-brands fa-twitter"></i></a>
+			</div>
+		</div>
+
+		<div class="trainer-card">
+			<div class="trainer-image">
+				<img src="static/images/experts/chatbot-expert.jpg" alt="AI Chatbot Expert">
+			</div>
+			<div class="trainer-desc">
+				<h2>AI Chatbot Developer</h2>
+				<p>Designing intelligent chatbots to provide real-time guidance, motivation, and support.</p>
+			</div>
+			<div class="trainer-contact">
+				<a href="#"><i class="fa-brands fa-linkedin"></i></a>
+				<a href="#"><i class="fa-brands fa-twitter"></i></a>
+			</div>
+		</div>
+
+	</div>
+	<!--   === Team Contents Ends ===   -->
+</section>
+ 
+<!--   *** Team Section Ends ***   -->
+
+<!--   *** Pricing Section Starts ***   -->
+<section class="pricing" id="pricing">
+
+    <!--   === Pricing Header Starts ===   -->
+    <header class="section-header">
+        <h3>Pricing</h3>
+        <h1>Choose Your Perfect Plan</h1>
+        <p>Discover the plan that best fits your fitness journey. With HealthHub AI, get tailored workouts, progress tracking, and more at your fingertips.</p>
+    </header>
+    <!--   === Pricing Header Ends ===   -->
+    
+    <!--   === Pricing Contents Starts ===   -->
+    <div class="pricing-contents">
+        
+        <!--   === Pricing Card 1 Starts ===   -->
+        <div class="pricing-card">
+            <div class="pricing-card-header">
+                <span class="pricing-card-title">Basic</span>
+                <div class="price-circle">
+                    <span class="price"><i>$</i>9.99</span>
+                    <span class="desc">/ Month</span>
+                </div>
+            </div>
+
+            <div class="pricing-card-body">
+                <ul>
+                    <li><i class="fa-solid fa-check"></i>AI-Powered Workout Plans</li>
+                    <li><i class="fa-solid fa-check"></i>Progress Tracking Dashboard</li>
+                    <li><i class="fa-solid fa-check"></i>Community Access</li>
+                    <li><i class="fa-solid fa-check"></i>Monthly Fitness Reports</li>
+                </ul>
+                <button class="btn price-plan-btn">Select Plan</button>
+            </div>
+        </div>
+        <!--   === Pricing Card 1 Ends ===   -->
+
+        <!--   === Pricing Card 2 Starts ===   -->
+        <div class="pricing-card">
+            <div class="pricing-card-header">
+                <div class="tag-box">
+                    <span class="tag">Most Popular</span>
+                </div>
+                <span class="pricing-card-title">Pro</span>
+                <div class="price-circle">
+                    <span class="price"><i>$</i>29.99</span>
+                    <span class="desc">/ Month</span>
+                </div>
+            </div>
+
+            <div class="pricing-card-body">
+                <ul>
+                    <li><i class="fa-solid fa-check"></i>All Basic Features</li>
+                    <li><i class="fa-solid fa-check"></i>Personalized Coaching Sessions</li>
+                    <li><i class="fa-solid fa-check"></i>AI Chatbot for Real-Time Assistance</li>
+                    <li><i class="fa-solid fa-check"></i>Exclusive Fitness Challenges</li>
+                </ul>
+                <button class="btn price-plan-btn">Select Plan</button>
+            </div>
+        </div>
+        <!--   === Pricing Card 2 Ends ===   -->
+
+        <!--   === Pricing Card 3 Starts ===   -->
+        <div class="pricing-card">
+            <div class="pricing-card-header">
+                <span class="pricing-card-title">Premium</span>
+                <div class="price-circle">
+                    <span class="price"><i>$</i>49.99</span>
+                    <span class="desc">/ Month</span>
+                </div>
+            </div>
+
+            <div class="pricing-card-body">
+                <ul>
+                    <li><i class="fa-solid fa-check"></i>All Pro Features</li>
+                    <li><i class="fa-solid fa-check"></i>Dedicated Fitness Consultant</li>
+                    <li><i class="fa-solid fa-check"></i>Priority Support</li>
+                    <li><i class="fa-solid fa-check"></i>Custom Workout & Nutrition Plans</li>
+                </ul>
+                <button class="btn price-plan-btn">Select Plan</button>
+            </div>
+        </div>
+        <!--   === Pricing Card 3 Ends ===   -->
+
+    </div>
+    <!--   === Pricing Contents Ends ===   -->
+</section>
+
+<!--   *** Pricing Section Ends ***   -->
+
+<!--   *** Blog Section Starts ***   -->
+<section class="blog" id="blog">
+    <!--   === Blog Header Starts ===   -->
+    <header class="section-header">
+        <h3>Our Insights</h3>
+        <h1>Latest From HealthHub AI</h1>
+        <p>Stay updated with the latest trends in AI-powered fitness. Discover how technology is reshaping personal wellness and transforming workouts.</p>
+    </header>
+    <!--   === Blog Header Ends ===   -->
+
+    <!--   === Blog Contents Starts ===   -->
+    <div class="blog-contents">
+        
+        <div class="article-card">
+            <img src="static/images/posts/post-2.jpg" alt="AI in Fitness">
+            <div class="category">
+                <div class="subject"><h3>AI & Fitness</h3></div>
+                <span>21/06/2023</span>
+            </div>
+            <h2 class="article-title">How AI is Revolutionizing Personalized Workouts</h2>
+            <p class="article-desc">Explore how artificial intelligence is creating tailored fitness plans that adapt to your goals, making workouts more effective than ever.</p>
+            <div class="article-views">
+                <span>2.5k <i class="fa-solid fa-eye"></i></span>
+                <span>352 <i class="fa-solid fa-comment"></i></span>
+            </div>
+        </div>
+
+        <div class="article-card">
+            <img src="static/images/posts/post-2.jpg" alt="Fitness Trends">
+            <div class="category">
+                <div class="subject"><h3>Innovation</h3></div>
+                <span>15/07/2023</span>
+            </div>
+            <h2 class="article-title">Top Fitness Trends Driven by AI</h2>
+            <p class="article-desc">Dive into the latest fitness trends influenced by AI, from smart training systems to virtual coaching, and learn how to stay ahead in your fitness journey.</p>
+            <div class="article-views">
+                <span>3.1k <i class="fa-solid fa-eye"></i></span>
+                <span>410 <i class="fa-solid fa-comment"></i></span>
+            </div>
+        </div>
+
+        <div class="article-card">
+            <img src="static/images/posts/post-3.jpg" alt="Virtual Coaching">
+            <div class="category">
+                <div class="subject"><h3>Virtual Coaching</h3></div>
+                <span>08/08/2023</span>
+            </div>
+            <h2 class="article-title">Virtual Coaching: The Future of Personalized Training</h2>
+            <p class="article-desc">Learn about virtual coaching powered by AI and how it's making personalized training accessible to everyone, anytime, anywhere.</p>
+            <div class="article-views">
+                <span>4.2k <i class="fa-solid fa-eye"></i></span>
+                <span>478 <i class="fa-solid fa-comment"></i></span>
+            </div>
+        </div>
+
+    </div>
+    <!--   === Blog Contents Ends ===   -->
+    <div class="view-more-btn-container">
+        <button class="btn articles-view-btn">View More</button>
+    </div>
+</section>
+
+<!--   *** Blog Section Ends ***   -->
+
+<!--   *** Footer Section Starts ***   -->
+<section class="page-footer">
+	
+	<!--   === Footer Contents Starts ===   -->
+	<div class="footer-contents">
+		
+		<div class="footer-col footer-col-1">
+			<div class="footer-col-title">
+				<h3>About HealthHub AI</h3>
+			</div>
+			<div class="footer-col-desc">
+				<p>HealthHub AI is revolutionizing the fitness world by combining cutting-edge AI technology with personalized health insights. Our mission is to make your fitness journey smarter, easier, and more effective.</p>
+				<p>Join us and experience how AI can transform your wellness journey.</p>
+				<span>123 AI Drive, Silicon Valley, CA, USA</span>
+				<span>+1 800 555 0199</span>
+				<span>support@healthhubai.com</span>
+				<div class="footer-social-media">
+					<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+					<a href="#"><i class="fa-brands fa-twitter"></i></a>
+					<a href="#"><i class="fa-brands fa-instagram"></i></a>
+					<a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-col footer-col-2">
+			<div class="footer-col-title">
+				<h3>Explore</h3>
+			</div>
+			<div class="footer-col-desc">
+				<a href="#">Home</a>
+				<a href="#">About Us</a>
+				<a href="#">AI-Powered Solutions</a>
+				<a href="#">Virtual Coaches</a>
+				<a href="#">Pricing Plans</a>
+				<a href="#">Blog & Insights</a>
+			</div>
+		</div>
+
+		<div class="footer-col footer-col-3">
+			<div class="footer-col-title">
+				<h3>Stay Connected</h3>
+			</div>
+			<div class="footer-col-desc">
+				<p>Subscribe to our newsletter for the latest updates on AI fitness innovations, expert tips, and exclusive offers.</p>
+				<form class="newsletter">
+					<input type="email" placeholder="Enter your email">
+					<button class="btn newsletter-btn" type="submit">Subscribe</button>
+				</form>
+			</div>
+		</div>
+
+	</div>
+	<!--   === Footer Contents Ends ===   -->
+
+</section>
+
+<!--   *** Footer Section Ends ***   -->
+
+<!--   *** Copy Rights Starts ***   -->
+<div class="copy-rights">
+	<p>Created By <b>vignesh</b> All Rights Reserved</p>
+</div>
+<!--   *** Copy Rights Ends ***   -->
+
+</div>
+<!--   *** Website Wrapper Ends ***   -->
+
+
+
+
+<!--   *** Link To Custom Script File ***   -->
+<script type="text/javascript" src="static/js/script_index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

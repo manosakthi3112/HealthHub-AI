@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Suggestion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Overall page styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c2c2c, #6b6b6b); /* Gray gradient background */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .container {
+            background: #fff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 50px;
+            width: 420px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: #ff8c00; /* Orange title */
+            font-size: 32px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: #555;
+            font-size: 14px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #f9f9f9;
+            font-size: 14px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #ff8c00; 
+            box-shadow: 0 0 10px rgba(255, 140, 0, 0.7);
+        }
+
+        button {
+            background: #ff8c00; /* Orange button */
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+        }
+
+        button:hover {
+            background: #e07b00; /* Darker orange on hover */
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.6);
+        }
+
+        button:active {
+            transform: translateY(2px);
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 30px;
+            }
+
+            button {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>AI Meal Suggestion</h1>
+    <form method="POST" action="{{ url_for('meal_suggestion') }}">
+        <label for="diet_type">Diet Type:</label>
+        <select name="diet_type" id="diet_type" required>
+            <option value="vegetarian">Vegetarian</option>
+            <option value="vegan">Vegan</option>
+            <option value="low-carb">Low-carb</option>
+            <option value="balanced">Balanced</option>
+        </select>
+
+        <label for="fitness_goal">Fitness Goal:</label>
+        <select name="fitness_goal" id="fitness_goal" required>
+            <option value="weight loss">Weight Loss</option>
+            <option value="muscle gain">Muscle Gain</option>
+            <option value="maintenance">Maintenance</option>
+        </select>
+
+        <label for="meal_type">Meal Type:</label>
+        <select name="meal_type" id="meal_type" required>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snack">Snack</option>
+        </select>
+
+        <button type="submit">Get Meal Suggestion</button>
+    </form>
+</div>
+
+</body>
+</html>

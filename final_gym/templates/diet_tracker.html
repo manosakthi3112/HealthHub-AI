@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_diet.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Gray Background */
+        body {
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: #fff; 
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        /* Title and Header Styling */
+        h1, h3 {
+            color: #ff7f00; /* Orange theme */
+            font-weight: bold;
+        }
+
+        /* Buttons with Orange Theme */
+        .btn-primary, .btn-success, .btn-warning, .btn-danger {
+            background-color: #ff7f00;
+            border: none;
+        }
+
+        .btn-primary:hover, .btn-success:hover, .btn-warning:hover, .btn-danger:hover {
+            background-color: #e66a00;
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+
+        .btn-outline-secondary {
+            color: #ff7f00;
+            border-color: #ff7f00;
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: #ff7f00;
+            color: #fff;
+        }
+
+        /* Table Styling */
+        table {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: #ff7f00;
+            color: #fff;
+        }
+
+        tbody tr:hover {
+            background-color: #f5f5f5;
+            transition: 0.3s;
+        }
+
+        /* Dark Mode Toggle */
+        #darkModeToggle i {
+            transition: 0.3s;
+        }
+
+        #darkModeToggle:hover i {
+            transform: rotate(180deg);
+        }
+
+        /* Download Button */
+        .btn-lg {
+            background-color: #ff7f00;
+            color: #fff;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+
+        .btn-lg:hover {
+            background-color: #e66a00;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="title">Welcome, {{ current_user.id }}</h1>
+            <button id="darkModeToggle" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <!-- Logout Button -->
+        <div class="text-center mb-3">
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+
+        <!-- Date Selection Form -->
+        <form method="GET" class="mb-3 text-center">
+            <label for="date" class="fw-bold">Select Date:</label>
+            <input type="date" name="date" id="date" class="form-control d-inline w-auto" value="{{ selected_date }}">
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+
+        <!-- Form Section - Add Food -->
+        <div class="card p-4 shadow-lg">
+            <h3 class="text-center mb-3">Add Food Item</h3>
+            <form method="POST">
+                <div class="mb-3">
+                    <input type="text" name="food_name" class="form-control" placeholder="Food Name" required>
+                </div>
+                <div class="mb-3">
+                    <input type="number" name="quantity" class="form-control" placeholder="Quantity (g)" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">
+                    <i class="fas fa-plus-circle"></i> Add Food
+                </button>
+            </form>
+        </div>
+
+        <!-- Total Calories Display -->
+        <div class="mt-3 p-3 text-center total-calories">
+            <strong>Total Calories:</strong> <span class="text-danger">{{ total_calories }} kcal</span>
+        </div>
+
+        <!-- Food Entries Table -->
+        <div class="mt-3">
+            <h3 class="text-center">Your Food Entries ({{ selected_date }})</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Food Name</th>
+                            <th>Quantity</th>
+                            <th>Calories</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in food_entries %}
+                        <tr>
+                            <td>{{ entry.food_name }}</td>
+                            <td>{{ entry.quantity }}g</td>
+                            <td>{{ entry.calories }} kcal</td>
+                            <td>
+                                <a href="{{ url_for('edit_food', food_id=entry['_id']|string) }}" class="btn btn-warning btn-sm">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <form method="POST" action="{{ url_for('delete_food', food_id=entry['_id']|string) }}" style="display:inline;">
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Export Data -->
+        <div class="mt-4 text-center">
+            <a href="{{ url_for('export') }}" class="btn btn-primary btn-lg shadow-sm">
+                <i class="fas fa-download"></i> Download CSV
+            </a>
+        </div>
+    </div>
+
+    <!-- Dark Mode & Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script_diet.js') }}"></script>
+</body>
+</html>

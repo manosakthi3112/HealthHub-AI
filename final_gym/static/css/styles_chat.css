@@ -1,0 +1,178 @@
+/* ======= General Styles ======= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Background */
+body {
+    background: #2f2f2f;  /* Dark gray background */
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Chat Container */
+.chat-container {
+    width: 90%;
+    max-width: 700px;
+    background: #3a3a3a;  /* Dark gray chat box */
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Title */
+h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #ff8c00;  /* Orange title */
+    margin-bottom: 15px;
+}
+
+/* Chat Box */
+.chat-box {
+    height: 450px;
+    overflow-y: auto;
+    border: 2px solid #ff8c00;  /* Orange border */
+    background: #2c2c2c;  /* Darker gray for messages */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* User & Bot Messages */
+.message {
+    margin: 12px 0;
+    padding: 12px;
+    border-radius: 8px;
+    line-height: 1.5;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.user {
+    background: #ff8c00;  /* Orange for user messages */
+    color: #fff;
+    align-self: flex-end;
+    text-align: right;
+    animation: slideInRight 0.5s;
+}
+
+.bot {
+    background: #444;  /* Dark gray for bot messages */
+    color: #fff;
+    align-self: flex-start;
+    animation: slideInLeft 0.5s;
+}
+
+.message:hover {
+    transform: translateY(-3px);
+}
+
+/* Input and Button */
+.input-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ff8c00;
+    border-radius: 8px;
+    background: #fff;
+    color: #333;
+    transition: 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #ffab4a;  /* Lighter orange focus effect */
+}
+
+button {
+    padding: 12px 25px;
+    background: #ff8c00;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #e07b00;  /* Darker orange on hover */
+}
+
+/* Back Button */
+.home-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    color: #ff8c00;
+    text-decoration: none;
+    border: 2px solid #ff8c00;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.home-button:hover {
+    background: #ff8c00;
+    color: white;
+}
+
+/* Scrollbar Styling */
+.chat-box::-webkit-scrollbar {
+    width: 10px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background: #ff8c00;
+    border-radius: 8px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background: #3a3a3a;
+}
+
+/* ======= Animations ======= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

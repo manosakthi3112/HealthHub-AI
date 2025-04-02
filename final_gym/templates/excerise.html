@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Exercise Videos</title>
+    <style>
+        /* Base Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #2c2c2c;
+            color: #ddd;
+        }
+
+        .container {
+            width: 85%;
+            margin: 50px auto;
+            padding: 30px;
+            background: #3a3a3a;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s;
+        }
+
+        .container:hover {
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff8c00;
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        /* Filter Dropdown */
+        .filter-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        select {
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: 1px solid #ff8c00;
+            background: #4a4a4a;
+            color: #fff;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        select:hover {
+            background: #ff8c00;
+            color: #000;
+        }
+
+        /* Video Section Styling */
+        .video {
+            background: #4a4a4a;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+
+        .video:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .collapsible {
+            background: #ff8c00;
+            color: white;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .collapsible:hover, .collapsible.active {
+            background: #e07b00;
+        }
+
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            background: #5a5a5a;
+            border-radius: 0 0 10px 10px;
+            border-top: 2px solid #ff8c00;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .content p {
+            margin: 20px;
+            color: #ccc;
+            font-size: 18px;
+        }
+
+        .content a {
+            display: inline-block;
+            margin: 20px;
+            padding: 12px 25px;
+            color: #ff8c00;
+            font-weight: bold;
+            text-decoration: none;
+            border: 2px solid #ff8c00;
+            border-radius: 8px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .content a:hover {
+            background: #ff8c00;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .collapsible {
+                font-size: 18px;
+                padding: 15px;
+            }
+
+            .content p, .content a {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>All Exercise Videos</h1>
+
+    <!-- Filter Dropdown -->
+    <div class="filter-container">
+        <label for="body-part">Filter by Body Type:</label>
+        <select id="body-part" onchange="filterVideos()">
+            <option value="all">All</option>
+            {% for part in body_parts %}
+            <option value="{{ part }}">{{ part.capitalize() }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    {% for video in videos %}
+    <div class="video" data-body-part="{{ video.body_part }}">
+        <button class="collapsible" aria-expanded="false">{{ video.title }}</button>
+        <div class="content">
+            <p><strong>Description:</strong> {{ video.description }}</p>
+            <p><strong>Body Part:</strong> {{ video.body_part }}</p>
+            <p><strong>Equipment:</strong> {{ video.equipment }}</p>
+            <p><strong>Type:</strong> {{ video.type }}</p>
+            <a href="{{ url_for('video', file_id=video.file_id) }}">▶️ Watch Video</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    // Collapsible behavior
+    const collapsibles = document.querySelectorAll(".collapsible");
+
+    collapsibles.forEach(button => {
+        button.addEventListener("click", function () {
+            this.classList.toggle("active");
+            const content = this.nextElementSibling;
+            content.style.maxHeight = this.classList.contains("active") ? content.scrollHeight + "px" : "0";
+        });
+    });
+
+    // Filter function
+    function filterVideos() {
+        const filterValue = document.getElementById('body-part').value.toLowerCase();
+        const videos = document.querySelectorAll('.video');
+
+        videos.forEach(video => {
+            const bodyPart = video.getAttribute('data-body-part').toLowerCase();
+            
+            video.style.display = (filterValue === 'all' || bodyPart === filterValue) ? 'block' : 'none';
+        });
+    }
+</script>
+
+</body>
+</html>

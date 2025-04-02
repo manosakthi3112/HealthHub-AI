@@ -1,0 +1,6 @@
+<h2>Select a Date to View Entries</h2>
+<ul>
+    {% for date in dates %}
+        <li><a href="{{ url_for('diet_tracker', date=date) }}">{{ date }}</a></li>
+    {% endfor %}
+</ul>

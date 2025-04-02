@@ -1,0 +1,124 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Animated Background */
+body {
+    background: linear-gradient(-45deg, #2a2a2a, #333333, #444444, #222222);
+    background-size: 400% 400%;
+    animation: gradientBG 6s infinite ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Background Animation */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glassmorphism Card */
+.register-form {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(255, 165, 0, 0.4);
+    padding: 35px;
+    text-align: center;
+    width: 350px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Fade-in Effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Form Header */
+h2 {
+    color: #ff9500;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+/* Input Focus */
+input:focus {
+    border: 2px solid #ff9500;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.6);
+}
+
+/* Input Placeholder */
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* 3D Button Effect */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #ff9500;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(255, 165, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button Hover Effect */
+button:hover {
+    background: #ff7b00;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 165, 0, 0.7);
+}
+
+/* Glowing Effect on Click */
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 10px rgba(255, 165, 0, 0.8);
+}
+
+/* Login Link */
+.login-link {
+    display: block;
+    margin-top: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.login-link:hover {
+    color: #ff9500;
+}

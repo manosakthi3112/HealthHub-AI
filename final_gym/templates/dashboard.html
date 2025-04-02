@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e0e0e0;  /* Gray background */
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, #ff8c00, #e67e22);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 2.8rem;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            cursor: pointer;
+        }
+        .stat-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+        .stat-card h3 {
+            font-size: 1.4rem;
+            color: #ff8c00;
+            margin-bottom: 15px;
+        }
+        .stat-card p {
+            font-size: 2.6rem;
+            font-weight: bold;
+            color: #444;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 18px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #ff8c00;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        tr:hover {
+            background: #ffe0b2;
+        }
+        td a {
+            text-decoration: none;
+            color: #ff8c00;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        td a:hover {
+            color: #e67e22;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            color: #fff;
+            background: linear-gradient(135deg, #ff8c00, #e67e22);
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .btn:hover {
+            background: #e67e22;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <h1>Admin Dashboard</h1>
+</div>
+
+<!-- Stats Section -->
+<div class="stats-container">
+    <div class="stat-card" onclick="location.href='#'">
+        <h3>Users</h3>
+        <p>{{ user_count }}</p>
+    </div>
+    <div class="stat-card" onclick="location.href='#'">
+        <h3>Exercises</h3>
+        <p>{{ exercise_count }}</p>
+    </div>
+    <div class="stat-card" onclick="location.href='#'">
+        <h3>Food Entries</h3>
+        <p>{{ food_count }}</p>
+    </div>
+    <div class="stat-card" onclick="location.href='#'">
+        <h3>Meal Plans</h3>
+        <p>{{ meal_plan_count }}</p>
+    </div>
+</div>
+
+<!-- Users Section -->
+<h2 style="text-align: center; color: #ff8c00;">Users</h2>
+{% if users %}
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Password</th>
+        <th>Actions</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user['_id'] }}</td>
+        <td>{{ user['password'] }}</td>
+        <td>
+            <a href="{{ url_for('edit_user', user_id=user['_id']) }}" class="btn">Edit</a>
+            <a href="{{ url_for('delete_user', user_id=user['_id']) }}" class="btn" style="background: #e74c3c;">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <p style="text-align: center;">No users found.</p>
+{% endif %}
+
+<!-- Diet Plans Section -->
+<!--<h2 style="text-align: center; color: #ff8c00;">Diet Plans</h2>
+{% if diet_plans %}
+<table>
+    <tr>
+        <th>Meal Plan</th>
+        <th>User ID</th>
+    </tr>
+    {% for plan in diet_plans %}
+    <tr>
+        <td>{{ plan.get('meal_name', 'N/A') }}</td>
+        <td>{{ plan.get('user_id', 'N/A') }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <p style="text-align: center;">No diet plans found.</p>
+{% endif %}-->
+
+<!-- Exercise Videos Section -->
+<h2 style="text-align: center; color: #ff8c00;">Exercise Videos</h2>
+{% if excercise %}
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>URL</th>
+    </tr>
+    {% for exercise_ in excercise %}
+    <tr>
+        <td>{{ exercise_['title'] }}</td>
+        <td>{{ exercise_['description'] }}</td>
+        <td><video controls width="350" height="175">
+    <source src="{{ url_for('stream', file_id=exercise_['file_id']) }}" type="{{ 'video/mp4'}}">
+    Your browser does not support the video tag.
+</video></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <p style="text-align: center;">No exercises found.</p>
+{% endif %}
+
+</body>
+</html>

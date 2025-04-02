@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Suggestion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Overall page styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c2c2c, #6b6b6b); /* Gray gradient */
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .container {
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            padding: 50px 60px;
+            max-width: 700px;
+            width: 90%;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            color: #ff8c00; /* Orange theme */
+            font-size: 40px;
+            margin-bottom: 30px;
+            letter-spacing: 1.5px;
+        }
+
+        h2 {
+            color: #444;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #ff8c00; /* Orange section headings */
+            font-size: 24px;
+            margin: 25px 0 15px;
+            text-align: left;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #f5f5f5;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.3s;
+            text-align: left;
+            font-size: 18px;
+        }
+
+        li:hover {
+            background: #ffecd1; 
+            transform: translateX(10px);
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .nutrition {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .nutrition-card {
+            background: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nutrition-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .nutrition-card strong {
+            color: #ff8c00;
+            font-size: 22px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 35px;
+            font-size: 20px;
+            color: #fff;
+            background: #ff8c00;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+        }
+
+        a:hover {
+            background: #e07b00; 
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 140, 0, 0.6);
+        }
+
+        a:active {
+            transform: translateY(2px);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px;
+            }
+
+            .nutrition {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Meal Suggestion</h1>
+
+    {% if meal %}
+        <h2>{{ meal['meal'] }}</h2>
+
+        <h3>Ingredients:</h3>
+        <ul>
+            {% for ingredient in meal['ingredients'] %}
+                <li>{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Instructions:</h3>
+        <p>{{ meal['instructions'] }}</p>
+
+        <h3>Nutritional Information:</h3>
+        <div class="nutrition">
+            <div class="nutrition-card">
+                <p>🔥 <strong>{{ meal['calories'] }}</strong> Calories</p>
+            </div>
+            <div class="nutrition-card">
+                <p>💪 <strong>{{ meal['protein'] }}g</strong> Protein</p>
+            </div>
+            <div class="nutrition-card">
+                <p>🥖 <strong>{{ meal['carbs'] }}g</strong> Carbs</p>
+            </div>
+            <div class="nutrition-card">
+                <p>🛢️ <strong>{{ meal['fat'] }}g</strong> Fat</p>
+            </div>
+        </div>
+
+    {% else %}
+        <p>No meal suggestion available.</p>
+    {% endif %}
+
+    <a href="{{ url_for('meal_suggestion') }}">Get Another Meal</a>
+
+</div>
+
+</body>
+</html>
