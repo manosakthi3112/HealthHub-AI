@@ -18,7 +18,7 @@ from pymongo import MongoClient
 import certifi
 
 # Secure API key using environment variables
-GENAI_API_KEY = "AIzaSyBSxiJEVwYZTNx6n-nnGxslYbJGMPKcLhc"
+GENAI_API_KEY = "Google API key"
 if not GENAI_API_KEY:
     raise ValueError("Missing GENAI_API_KEY. Set it in environment variables.")
 
@@ -34,9 +34,9 @@ login_manager = LoginManager(app)
 login_manager.login_view = "login"
 
 # MongoDB Setup
-client = MongoClient("mongodb+srv://manot6114:z4oxzOhu1nDpQRK0@vicky.u6lm4.mongodb.net",
+client = MongoClient("mongodb+srv://{connection_string}",
                      tls=True, tlsCAFile=certifi.where())
-#client = MongoClient("mongodb+srv://manot6114:z4oxzOhu1nDpQRK0@vicky.u6lm4.mongodb.net/?retryWrites=true&w=majority&appName=vicky")
+
 db = client["diet_tracker"]
 excerise_db = client["exercise_videos"]
 fs = gridfs.GridFS(excerise_db)
